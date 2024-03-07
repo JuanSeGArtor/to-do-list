@@ -1,0 +1,22 @@
+// Estilos componente Button
+
+
+.button-link {
+    text-align: center;
+    width: 180px;
+    padding: 10px 0px;
+    font-size: 24px;
+    border: none;
+    background-color: steelblue;
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+        transition: ease 1s;
+        background-color: rgb(96, 153, 201);
+        border-radius: 20px;
+    }
+    &:active {
+        margin-top: 10px;
+    }
+}
