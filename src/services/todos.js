@@ -22,3 +22,14 @@ export const getTodo = async (id) => {
     return null;
   }
 };
+
+
+export const createTodo = async (todo) => {
+  try {
+    const response = await axios.post(`${url}/todos`, todo);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
