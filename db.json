@@ -1,0 +1,22 @@
+{
+    "todos": [
+        {
+            "id": "1",
+            "title": "Task 1",
+            "description": "this is a description for task 1",
+            "creationDate": "08-03-2024"
+        },
+        {
+            "id": "2",
+            "title": "Task 2",
+            "description": "this is a description for task 2",
+            "creationDate": "08-03-2024"
+        },
+        {
+            "id": "3",
+            "title": "Task 3",
+            "description": "this is a description for task 3",
+            "creationDate": "08-03-2024"
+        }
+    ]
+}
