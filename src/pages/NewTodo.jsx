@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { createTodo } from "../services/todos";
+import './newTodo.scss';
+import Button from "../components/Button";
 
 
 export default function NewTodo() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [creationDate, setCreationDate] = useState('');
+    const [creationDate, setCreationDate] = useState('')
 
     const handleTitleChange = (e) => {
         setTitle(e.target.value);
@@ -20,6 +22,11 @@ export default function NewTodo() {
     };
 
     const handleSave = async () => {
+        if (!title || !description || !creationDate) {
+            console.log("Campo(s) no llenados");
+            return;
+        }
+
         const todo = {
             title: title,
             description: description,
@@ -29,10 +36,15 @@ export default function NewTodo() {
         try {
             const createdTodo = await createTodo(todo);
             console.log('New todo created:', createdTodo);
+            alert('TODO created');
+
+            setTitle('')
+            setDescription('')
+            setCreationDate('')
         } catch (error) {
             console.log('Error creating new todo:', error);
         }
-    }
+    };
 
 
     return (
@@ -46,9 +58,12 @@ export default function NewTodo() {
                 <label htmlFor="">TODO Creation Time</label>
                 <input required type="date" value={creationDate} onChange={handleCreationDateChange} />
             </main>
-            <button className="button-save" onClick={handleSave}>
-                Save
-            </button>
+            <div className="buttons">
+                <button className="button-save" onClick={handleSave}>
+                    Save
+                </button>
+                <Button text="TODOs List" path="/"/>
+            </div>
         </section>
     )
 }
