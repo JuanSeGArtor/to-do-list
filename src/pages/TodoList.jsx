@@ -26,11 +26,10 @@ export default function TodoList() {
             <h1>TODO LIST</h1>
             <main>
                 {todos.map(todo => (
-                    <div key={todo.id}>
+                    <div className="todos-list" key={todo.id}>
                         <h2>{todo.title}</h2>
-                        <p>{todo.description}</p>
-                        <p>{todo.creationDate}</p>
-                        <Link to={`/todo-detail/${todo.id}`}>Ver detalle</Link>
+                        <Link className="link" to={`/todo-detail/${todo.id}`}>Ver detalle</Link>
+                        <button>X</button>
                     </div>
                 ))}
             </main>
