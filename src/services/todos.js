@@ -33,3 +33,13 @@ export const createTodo = async (todo) => {
     return null;
   }
 }
+
+
+export const removeTodo = async (id) => {
+  try {
+    await axios.delete(`${url}/todos/${id}`);
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};

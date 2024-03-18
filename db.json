@@ -13,12 +13,6 @@
       "creationDate": "08-03-2024"
     },
     {
-      "id": "3",
-      "title": "Task 3",
-      "description": "this is a description for task 3",
-      "creationDate": "08-03-2024"
-    },
-    {
       "id": "49c8",
       "title": "Hacer la cama",
       "description": "Actividad inicial del dia",
@@ -35,12 +29,6 @@
       "title": "Trotar en ciclorutas",
       "description": "Cada domingo en lo posbile realizar una caminata de 8-10km con duracion de 1h-2h",
       "creationDate": "2024-03-17"
-    },
-    {
-      "id": "d3d5",
-      "title": "Todo example",
-      "description": "Se ha creado con exito",
-      "creationDate": "2024-03-22"
     }
   ]
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Button from "../../components/Button";
-import { getTodos } from "../../services/todos";
+import { getTodos, removeTodo } from "../../services/todos";
 import { Link } from "react-router-dom";
 
 
@@ -18,7 +18,16 @@ export default function TodoList() {
         } catch (error) {
             console.log(error);
         }
-    } 
+    }
+
+    const handleDeleteTodo = async (id) => {
+        try {
+            await removeTodo(id);
+            setTodos(prevTodos => prevTodos.filter(todo => todo.id !== id));
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
 
     return (
@@ -29,7 +38,7 @@ export default function TodoList() {
                     <div className="todos-list" key={todo.id}>
                         <h2>{todo.title}</h2>
                         <Link className="link" to={`/${todo.id}`}>Ver detalle</Link>
-                        <button>X</button>
+                        <button onClick={() => handleDeleteTodo(todo.id)}>X</button>
                     </div>
                 ))}
             </main>
