@@ -1,25 +1,15 @@
 import { useState } from "react";
-import { createTodo } from "../../services/todos";
 import './newTodo.scss';
 import Button from "../../components/Button";
+import { useCreateTodoMutation } from "../../services/todos";
 
 
 export default function NewTodo() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [creationDate, setCreationDate] = useState('')
+    const [creationDate, setCreationDate] = useState('');
 
-    const handleTitleChange = (e) => {
-        setTitle(e.target.value);
-    };
-
-    const handleDescriptionChange = (e) => {
-        setDescription(e.target.value);
-    };
-
-    const handleCreationDateChange = (e) => {
-        setCreationDate(e.target.value);
-    };
+    const [createTodo, { isLoading }] = useCreateTodoMutation();
 
     const handleSave = async () => {
         if (!title || !description || !creationDate) {
@@ -34,8 +24,8 @@ export default function NewTodo() {
         };
 
         try {
-            const createdTodo = await createTodo(todo);
-            console.log('New todo created:', createdTodo);
+            await createTodo(todo).unwrap();
+            console.log('New todo created');
             alert('TODO created');
 
             setTitle('')
@@ -46,23 +36,22 @@ export default function NewTodo() {
         }
     };
 
-
     return (
         <section>
             <h1>NEW TODO</h1>
             <main>
                 <label htmlFor="">TODO Title</label>
-                <input required type="text" placeholder="TODO title" value={title} onChange={handleTitleChange} />
+                <input required type="text" placeholder="TODO title" value={title} onChange={(e) => setTitle(e.target.value)} />
                 <label htmlFor="">TODO Description</label>
-                <textarea required className="description" type="text" placeholder="Description" value={description} onChange={handleDescriptionChange} />
+                <textarea required className="description" type="text" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
                 <label htmlFor="">TODO Creation Time</label>
-                <input required type="date" value={creationDate} onChange={handleCreationDateChange} />
+                <input required type="date" value={creationDate} onChange={(e) => setCreationDate(e.target.value)} />
             </main>
             <div className="buttons">
-                <button className="button-save" onClick={handleSave}>
-                    Save
+                <button className="button-save" onClick={handleSave} disabled={isLoading}>
+                    {isLoading ? "Saving..." : "Save"}
                 </button>
-                <Button text="TODOs List" path="/"/>
+                <Button text="TODOs List" path="/" />
             </div>
         </section>
     )

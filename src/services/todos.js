@@ -1,45 +1,30 @@
-import axios from "axios";
-
-const url = "http://localhost:3001";
-
-export const getTodos = async () => {
-  try {
-    const response = await axios.get(`${url}/todos`);
-    return response.data;
-  } catch (error) {
-    console.log(error);
-    return [];
-  }
-};
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 
-export const getTodo = async (id) => {
-  try {
-    const response = await axios.get(`${url}/todos/${id}`);
-    return response.data;
-  } catch (error) {
-    console.log(error);
-    return null;
-  }
-};
+export const todosApi = createApi({
+  reducerPath: 'todosApi',
+  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001' }),
+  endpoints: (builder) => ({
+    getTodos: builder.query({
+      query: () => 'todos',
+    }),
+    getTodo: builder.query({
+      query: (id) => `todos/${id}`,
+    }),
+    createTodo: builder.mutation({
+      query: (todo) => ({
+        url: 'todos',
+        method: 'POST',
+        body: todo,
+      }),
+    }),
+    removeTodo: builder.mutation({
+      query: (id) => ({
+        url: `todos/${id}`,
+        method: 'DELETE',
+      }),
+    }),
+  }),
+});
 
-
-export const createTodo = async (todo) => {
-  try {
-    const response = await axios.post(`${url}/todos`, todo);
-    return response.data;
-  } catch (error) {
-    console.log(error);
-    return null;
-  }
-}
-
-
-export const removeTodo = async (id) => {
-  try {
-    await axios.delete(`${url}/todos/${id}`);
-  } catch (error) {
-    console.log(error);
-    return null;
-  }
-};
+export const { useGetTodosQuery, useGetTodoQuery, useCreateTodoMutation, useRemoveTodoMutation } = todosApi;
