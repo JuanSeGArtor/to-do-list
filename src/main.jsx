@@ -1,29 +1,14 @@
-import ReactDOM from 'react-dom/client'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import './main.scss';
-import TodoList from './pages/TodoList.jsx';
-import NewTodo from './pages/NewTodo.jsx';
-import TodoDetail from './pages/TodoDetail.jsx';
+import App from './App.jsx';
 
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <TodoList />,
-    children: [
-      {
-        path: "/todo-detail/:id",
-        element: <TodoDetail />,
-      },
-    ]
-  },
-  {
-    path: "/new-todo",
-    element: <NewTodo />,
-  },
-]);
-
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} />
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
 );

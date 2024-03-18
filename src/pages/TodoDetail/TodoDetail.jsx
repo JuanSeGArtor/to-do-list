@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Button from "../components/Button";
-import { getTodo } from "../services/todos";
+import Button from "../../components/Button";
+import { getTodo } from "../../services/todos";
 
 export default function TodoDetail() {
     const { id } = useParams();
@@ -21,15 +21,12 @@ export default function TodoDetail() {
         }
     };
 
-    if (!todo) {
-        return (
-            <section>
-                <h1>Loading...</h1>
-            </section>
-        );
-    }
-
+    
     return (
+        !todo 
+        ? 
+        <h1>Loading...</h1>
+        :
         <section>
             <h1>TODO Detail</h1>
             <main>

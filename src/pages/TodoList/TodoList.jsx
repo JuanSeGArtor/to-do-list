@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Button from "../components/Button";
-import { getTodos } from "../services/todos";
+import Button from "../../components/Button";
+import { getTodos } from "../../services/todos";
 import { Link } from "react-router-dom";
 
 
@@ -28,7 +28,7 @@ export default function TodoList() {
                 {todos.map(todo => (
                     <div className="todos-list" key={todo.id}>
                         <h2>{todo.title}</h2>
-                        <Link className="link" to={`/todo-detail/${todo.id}`}>Ver detalle</Link>
+                        <Link className="link" to={`/${todo.id}`}>Ver detalle</Link>
                         <button>X</button>
                     </div>
                 ))}

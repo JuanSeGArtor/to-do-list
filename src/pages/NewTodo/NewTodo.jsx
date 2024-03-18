@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { createTodo } from "../services/todos";
+import { createTodo } from "../../services/todos";
 import './newTodo.scss';
-import Button from "../components/Button";
+import Button from "../../components/Button";
 
 
 export default function NewTodo() {
