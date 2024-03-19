@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../../components/Button";
-import { addTodo, deleteTodo, selectTodos, toggleTodoStatus } from "../../redux/reducers/todoSlice";
+import { addTodo, deleteTodo, resetTodos, selectTodos, toggleTodoStatus } from "../../redux/reducers/todoSlice";
 
 export default function SyncTodoList() {
     const dispatch = useDispatch();
@@ -29,12 +29,17 @@ export default function SyncTodoList() {
     const handleToggleTodoStatus = (id) => {
         dispatch(toggleTodoStatus(id));
     }
+    
+    const handleResetTodos = () => {
+        dispatch(resetTodos());
+    }
+
 
     return (
         <section>
             <h1>SYNC TODO LIST</h1>
             <Button text="ASYNC TODOS" path="/" />
-            {/* reset todos */}
+            <button onClick={handleResetTodos}>Reset All</button>
             <div className="new-todo" style={{display: 'flex', gap: '20px'}}>
                 <input
                     type="text"

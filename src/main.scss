@@ -16,6 +16,19 @@ body {
         align-items: center;
         justify-content: center;
         gap: 30px;
+            
+        button {
+            font-size: 16px;
+            padding: 5px 10px;
+            background-color: lightcyan;
+            border:  2px solid steelblue;
+            cursor: pointer;
+            &:hover {
+                transition: ease 1s;
+                background-color: steelblue;
+                color: white;
+            }
+        }
 
         main {
             display: flex;
