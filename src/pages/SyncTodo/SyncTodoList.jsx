@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../../components/Button";
 import { addTodo, deleteTodo, resetTodos, selectTodos, toggleTodoStatus } from "../../redux/reducers/todoSlice";
+import { nanoid } from "@reduxjs/toolkit";
 
 export default function SyncTodoList() {
     const dispatch = useDispatch();
@@ -18,7 +19,7 @@ export default function SyncTodoList() {
             return;
         }
         const newTodo = {
-            id: Date.now(),
+            id: nanoid(),
             title: newTodoTitle,
             isCompleted: false,
         };

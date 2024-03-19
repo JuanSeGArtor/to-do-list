@@ -1,18 +1,11 @@
-import { useEffect } from "react";
 import Button from "../../components/Button";
 import { Link } from "react-router-dom";
 import { useGetTodosQuery, useRemoveTodoMutation } from "../../services/todos";
 
 export default function TodoList() {
-    const { data: todos, error, isLoading } = useGetTodosQuery();
+    const { data: todos, isLoading } = useGetTodosQuery();
 
     const [removeTodo] = useRemoveTodoMutation();
-
-    useEffect(() => {
-        if (error) {
-            console.log("Error fetching todos:", error);
-        }
-    }, [error]);
 
     const handleDeleteTodo = async (id) => {
         try {
