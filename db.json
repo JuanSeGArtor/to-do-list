@@ -29,6 +29,12 @@
       "title": "Trotar en ciclorutas",
       "description": "Cada domingo en lo posbile realizar una caminata de 8-10km con duracion de 1h-2h",
       "creationDate": "2024-03-17"
+    },
+    {
+      "id": "6c71",
+      "title": "Redux Async task",
+      "description": "Completed",
+      "creationDate": "2024-03-18"
     }
   ]
 }

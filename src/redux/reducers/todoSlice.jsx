@@ -32,4 +32,6 @@ const todoSlice = createSlice({
 
 export const { addTodo, toggleTodoStatus, deleteTodo, resetTodos } = todoSlice.actions;
 
+export const selectTodos = (state) => state.todos.todos;
+
 export default todoSlice.reducer;

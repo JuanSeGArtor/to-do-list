@@ -24,7 +24,8 @@ export default function TodoList() {
 
     return (
         <section>
-            <h1>TODO LIST</h1>
+            <h1>ASYNC TODO LIST</h1>
+            <Button text="SYNC TODOS" path="/sync-todo" />
             <main>
                 {isLoading ? (
                     <h2>Loading...</h2>
