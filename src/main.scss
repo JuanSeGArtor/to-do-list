@@ -37,6 +37,18 @@ body {
                 padding: 15px 10px;
                 background-color: white;
 
+                &.completed {
+                    background-color: rgb(122, 201, 66);
+                    .status{
+                        color: white;
+                    }
+                }
+                &.incomplete {
+                    .status{
+                        color: red;
+                    }
+                }
+                
                 .link {
                     text-decoration: none;
                     color: steelblue;

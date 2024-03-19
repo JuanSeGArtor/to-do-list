@@ -2,7 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 
 
 const initialState = {
-    todos: [],
+    todos: [
+        { id: 1, title: "Tarea 1", isCompleted: false },
+        { id: 2, title: "Tarea 2", isCompleted: false },
+    ],
 };
 
 const todoSlice = createSlice({
@@ -13,11 +16,10 @@ const todoSlice = createSlice({
             state.todos.push(action.payload);
         },
         toggleTodoStatus(state, action) {
-            const { id } = action.payload;
-            const todo = state.todos.find(todo => todo.id === id);
-            if (todo) {
-                todo.completed = !todo.completed;
-            }
+            const id = action.payload;
+            const todoId = state.todos.findIndex(todo => todo.id === id);
+            const updatedTodo = { ...state.todos[todoId], isCompleted: !state.todos[todoId].isCompleted };
+            state.todos[todoId] = updatedTodo;
         },
         deleteTodo(state, action) {
             const { id } = action.payload;

@@ -1,16 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../../components/Button";
-import { addTodo, deleteTodo, selectTodos } from "../../redux/reducers/todoSlice";
+import { addTodo, deleteTodo, selectTodos, toggleTodoStatus } from "../../redux/reducers/todoSlice";
 
 export default function SyncTodoList() {
     const dispatch = useDispatch();
     const todos = useSelector(selectTodos);
     const [newTodoTitle, setNewTodoTitle] = useState("");
 
-    useEffect(() => {
-        dispatch(addTodo({ id: 1, title: "Tarea 1", completed: false }));
-    }, []);
 
     const handleDeleteTodo = (id) => {
         dispatch(deleteTodo({ id }));
@@ -23,16 +20,21 @@ export default function SyncTodoList() {
         const newTodo = {
             id: Date.now(),
             title: newTodoTitle,
-            completed: false,
+            isCompleted: false,
         };
         dispatch(addTodo(newTodo)); 
         setNewTodoTitle("");
     };
 
+    const handleToggleTodoStatus = (id) => {
+        dispatch(toggleTodoStatus(id));
+    }
+
     return (
         <section>
             <h1>SYNC TODO LIST</h1>
             <Button text="ASYNC TODOS" path="/" />
+            {/* reset todos */}
             <div className="new-todo" style={{display: 'flex', gap: '20px'}}>
                 <input
                     type="text"
@@ -44,13 +46,15 @@ export default function SyncTodoList() {
             </div>
             <main>
                 {todos.map(todo => (
-                    <div className="todos-list" key={todo.id}>
+                    <div key={todo.id} className={`todos-list ${todo.isCompleted ? 'completed' : 'incomplete'}`}>
                         <h2>{todo.title}</h2>
+                        <button className="status" onClick={() => handleToggleTodoStatus(todo.id)}>
+                            {todo.isCompleted ? "Completed" : "Incomplete"}
+                        </button>
                         <button onClick={() => handleDeleteTodo(todo.id)}>X</button>
                     </div>
                 ))}
             </main>
-            {/* <Button text="New To-do" path="/new-sync-todo"/> */}
         </section>
     );
 }
