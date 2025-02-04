@@ -1,10 +1,10 @@
 import Button from "../../components/Button";
 import { Link } from "react-router-dom";
 import { useGetTodosQuery, useRemoveTodoMutation } from "../../services/todos";
+import DeleteButton from "../../components/DeleteButton";
 
 export default function TodoList() {
     const { data: todos, isLoading } = useGetTodosQuery();
-
     const [removeTodo] = useRemoveTodoMutation();
 
     const handleDeleteTodo = async (id) => {
@@ -27,7 +27,7 @@ export default function TodoList() {
                         <div className="todos-list" key={todo.id}>
                             <h2>{todo.title}</h2>
                             <Link className="link" to={`/${todo.id}`}>Ver detalle</Link>
-                            <button onClick={() => handleDeleteTodo(todo.id)}>X</button>
+                            <DeleteButton id={todo.id} onDelete={handleDeleteTodo} />
                         </div>
                     ))
                 )}

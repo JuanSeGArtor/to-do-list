@@ -17,3 +17,5 @@ Esta ruta muestra la información detallada de una tarea pendiente específica. 
 Título: El título de la tarea.
 Descripción: Una descripción detallada de la tarea.
 Fecha de creación: La fecha en la que se creó la tarea.
+
+Ejecuta: -npm run dev -npm run server

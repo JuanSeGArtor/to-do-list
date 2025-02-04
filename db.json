@@ -1,40 +1,10 @@
 {
   "todos": [
     {
-      "id": "1",
-      "title": "Task 1",
-      "description": "this is a description for task 1",
-      "creationDate": "08-03-2024"
-    },
-    {
-      "id": "2",
-      "title": "Task 2",
-      "description": "this is a description for task 2",
-      "creationDate": "08-03-2024"
-    },
-    {
-      "id": "49c8",
-      "title": "Hacer la cama",
-      "description": "Actividad inicial del dia",
-      "creationDate": "2024-03-05"
-    },
-    {
-      "id": "3bef",
-      "title": "Desayunar",
-      "description": "Actividad creada para desayunar",
-      "creationDate": "2024-03-08"
-    },
-    {
-      "id": "154c",
-      "title": "Trotar en ciclorutas",
-      "description": "Cada domingo en lo posbile realizar una caminata de 8-10km con duracion de 1h-2h",
-      "creationDate": "2024-03-17"
-    },
-    {
-      "id": "6c71",
-      "title": "Redux Async task",
-      "description": "Completed",
-      "creationDate": "2024-03-18"
+      "id": "d466",
+      "title": "dgfhgfm",
+      "description": "adsfsgfhgf",
+      "creationDate": "2025-01-31"
     }
   ]
 }
